@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clip Labs Webinar Workbook</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .personal-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .personal-field {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 0 10px;
+        }
+
+        .personal-field input {
+            margin-top: 4px;
+            background: #f8fafc;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2d3748;
+            margin-bottom: 16px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
+        input {
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+
+        .amount {
+            width: 140px;
+            background: #f8fafc;
+        }
+
+        .text {
+            flex-grow: 1;
+        }
+
+        input::placeholder {
+            color: #a0aec0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        button {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit {
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            color: white;
+            box-shadow: 0 4px 6px rgba(74, 144, 226, 0.2);
+        }
+
+        .submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(74, 144, 226, 0.3);
+        }
+
+        .clear {
+            background: #f7fafc;
+            color: #4a5568;
+        }
+
+        .clear:hover {
+            background: #edf2f7;
+        }
+
+        #success {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            margin: 30px 0;
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(74, 144, 226, 0.2);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .webinar-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .webinar-info p {
+            margin: 8px 0;
+            font-size: 1.2rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Dollar sign styling */
+        .dollar-input {
+            position: relative;
+        }
+
+        .dollar-input input {
+            padding-left: 28px;
+        }
+
+        .dollar-input::before {
+            content: '$';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Clip Labs Webinar Workbook</h1>
+            <p class="subtitle">Your journey to success starts here</p>
+            <div class="personal-info">
+                <div class="input-row" style="justify-content: center; margin-top: 20px;">
+                    <div class="personal-field">
+                        <label style="font-size: 0.9rem; color: #666;">Name</label>
+                        <input type="text" name="name" class="text" placeholder="Enter your name" style="width: 250px;">
+                    </div>
+                    <div class="personal-field">
+                        <label style="font-size: 0.9rem; color: #666;">Date</label>
+                        <input type="date" name="date" class="text" style="width: 200px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="success">
+            <h2>Congratulations on Taking the First Step!</h2>
+            <p>Your life is about to change. Join us for the exclusive webinar:</p>
+            <div class="webinar-info">
+                <p><strong>Saturday, February 22nd</strong></p>
+                <p><strong>2:00 PM</strong></p>
+            </div>
+            <p>Don't miss this opportunity to transform your future.</p>
+        </div>
+
+        <form id="workbook">
+            <div class="section">
+                <label>If I could make an extra $_________ per month, my life would be completely different because _________.</label>
+                <div class="input-row">
+                    <div class="dollar-input">
+                        <input type="text" class="amount" placeholder="amount">
+                    </div>
+                    <input type="text" class="text" placeholder="how would it change your life?">
+                </div>
+            </div>
+
+            <div class="section">
+                <label>Right now, I spend _________ hours scrolling on TikTok, but if I used that time clipping, I could be making _________.</label>
+                <div class="input-row">
+                    <input type="text" class="amount" placeholder="hours">
+                    <div class="dollar-input">
+                        <input type="text" class="text" placeholder="potential earnings">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <label>Why do influencers pay up to _________ for simple 30-second clips?</label>
+                <div class="input-row">
+                    <div class="dollar-input">
+                        <input type="text" class="amount" placeholder="amount">
+                    </div>
+                    <input type="text" class="text" placeholder="explain why">
+                </div>
+            </div>
+
+            <div class="section">
+                <label>What's the difference between a clip that makes $0 and one that makes _________?</label>
+                <div class="input-row">
+                    <div class="dollar-input">
+                        <input type="text" class="amount" placeholder="amount">
+                    </div>
+                    <input type="text" class="text" placeholder="explain the difference">
+                </div>
+            </div>
+
+            <div class="section">
+                <label>If I had an extra _________ per month, I would finally be able to _________.</label>
+                <div class="input-row">
+                    <div class="dollar-input">
+                        <input type="text" class="amount" placeholder="amount">
+                    </div>
+                    <input type="text" class="text" placeholder="your goal">
+                </div>
+            </div>
+
+            <div class="section">
+                <label>I won't be in the same position next year because starting today, I will _________.</label>
+                <input type="text" class="text" placeholder="your commitment to change">
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="submit">Submit My Workbook</button>
+                <button type="button" class="clear" onclick="document.getElementById('workbook').reset()">Clear All</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('workbook').onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById('success').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>
